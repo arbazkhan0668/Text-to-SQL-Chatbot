@@ -36,6 +36,20 @@ If you already have the project, open a terminal in its root directory instead.
 
 ### 2. Create and activate a virtual environment
 
+On Ubuntu, run the setup script from the project folder. It installs system
+prerequisites, Python 3.12, and the dependencies pinned in `uv.lock`:
+
+```bash
+bash setup_ubuntu.sh
+source .venv/bin/activate
+```
+
+Then continue to [Configure credentials](#configure-credentials). You still
+need an API key for an AI provider to generate SQL. MySQL is only needed for
+Real Database mode; the Demo mode uses the bundled SQLite database.
+
+For a server deployment, see the [Ubuntu deployment guide](./devops/README.md).
+
 On Windows PowerShell:
 
 ```powershell
@@ -147,7 +161,7 @@ Run them from the project root:
 
 ```bash
 streamlit run demo.py
-streamlit run demo_sqllite.py
+bash run_demo_sqllite.sh
 ```
 
 ## Project structure
@@ -160,6 +174,8 @@ demo.py                      MySQL Streamlit demo
 demo_sqllite.py              SQLite Streamlit demo
 sql_interface.png            Application screenshot used above
 sql_lite_datacreate.py       Creates the sample SQLite database
+run_demo_sqllite.sh          Launches the SQLite Streamlit demo on Ubuntu
+devops/                      Ubuntu deployment guide and project-based DevOps classes
 uber.db                      Bundled SQLite demo database
 requirements.txt             Python dependencies
 pyproject.toml               Project metadata and uv dependencies
