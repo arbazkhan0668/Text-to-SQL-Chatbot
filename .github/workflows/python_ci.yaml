@@ -1,0 +1,53 @@
+
+name: Text-to-SQL Chatbot CI Pipeline
+
+# Events that trigger the workflow
+on:
+  push:
+    branches:
+      - master
+
+  pull_request:
+    branches:
+      - master
+
+  workflow_dispatch:
+
+# Minimum permissions
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+
+    # GitHub-hosted Ubuntu machine
+    runs-on: ubuntu-latest
+
+    steps:
+
+      # Step 1: Download repository code
+      - name: Checkout Repository
+        uses: actions/checkout@v6
+
+      # Step 2: Install Python
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      # Step 3: Install dependencies
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # Step 4: Check Python syntax
+      - name: Compile Python Files
+        run: |
+          python -m compileall -q app main.py
+
+      # Step 5: Validate SQLite database
+      - name: Validate SQLite Database
+        run: |
+          python -c "import sqlite3; c=sqlite3.connect('uber.db'); print('Database:', c.execute('PRAGMA integrity_check').fetchone()[0]); c.close()"
