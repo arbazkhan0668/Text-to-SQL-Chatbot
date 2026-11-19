@@ -45,6 +45,6 @@ uv sync --frozen --no-install-project --python 3.12
 echo ""
 echo "=== Setup Complete! ==="
 echo "Next steps:"
-echo "  1. Activate environment: source .venv/bin/activate"
+echo "  1. (for linux) Activate environment: source .venv/bin/activate"
 echo "  2. Add your API key to the .env file"
 echo "  3. Start the app:        streamlit run main.py"
