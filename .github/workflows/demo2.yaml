@@ -1,0 +1,23 @@
+name: First GitHub Actions Workflow
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Welcome Message
+        run: echo "Welcome to GitHub Actions"
+
+      - name: Check Python Version
+        run: python --version
+
+      - name: Check Current Directory
+        run: pwd
+
+      - name: List Project Files
+        run: ls -la
