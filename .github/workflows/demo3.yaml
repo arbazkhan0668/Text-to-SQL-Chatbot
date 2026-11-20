@@ -8,13 +8,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: echo "Testing chal rahi hai..."
+      - run: echo "Testing is running..."
 
   deploy:
     needs: test          
     runs-on: ubuntu-latest
     steps:
-      - name: Server par Deploy karein
+      - name: deploy to server
         env:
           SERVER_SECRET: ${{ secrets.MY_PASSWORD }}  # Safe password use
         run: echo "Deploying to server safely!"
