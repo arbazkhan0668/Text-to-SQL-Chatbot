@@ -18,3 +18,10 @@ jobs:
         env:
           SERVER_SECRET: ${{ secrets.MY_PASSWORD }}  # Safe password use
         run: echo "Deploying to server safely!"
+
+  job3:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Final Step
+        run: echo "Deployment complete!"
