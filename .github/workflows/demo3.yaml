@@ -1,0 +1,20 @@
+name: Production Deploy
+on:
+  push:
+    branches: [ main ]   
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "Testing chal rahi hai..."
+
+  deploy:
+    needs: test          
+    runs-on: ubuntu-latest
+    steps:
+      - name: Server par Deploy karein
+        env:
+          SERVER_SECRET: ${{ secrets.MY_PASSWORD }}  # Safe password use
+        run: echo "Deploying to server safely!"
